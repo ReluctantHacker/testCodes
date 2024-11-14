@@ -1,0 +1,46 @@
+An e-commerce site has a series of advertisements to display. Links to the ads are stored in a data structure and they are displayed or not  based on the they are displayed or not based on the value at a bit position in a number. The sequence of a adsd being displayed at this time can be represented as a binary value, where 1 means the ad is displayed and 0 means it is hidden. The ads should rotate, so on the next page load, ads that are displayed now are hidde and vice versa. 
+
+
+Given a base 10 integer representingn the current display state of all ads, determine its binary representation. Starting from the position of its highest order 1 bit, negate that bit and all lower order bits from 0 to 1 or from 1 to 0. Return the base 10 representation of the result.
+
+
+
+Example:
+base10 = 30
+30_10 = 00011110_2
+
+Strip the insignificant zeroes then flip all of the bits in 11110_2 to get 00001_2 = 1. The example shows the value as an 8-bit binary to demonstrate that preceding zeroes are discarded.
+
+
+
+Sample Input:
+input: 50 ->  Output: 13
+
+Explanation 0
+50_10 in binary is 110010_2. Negate each bit in the sequence to get 001101_2 = 13_10
+
+
+
+
+
+
+Answer:(chatgpt)
+
+def strip_and_flip_base10(num):
+    # Convert the decimal number to binary and remove the '0b' prefix
+    binary_representation = bin(num)[2:]
+
+    # Negate each bit in the binary sequence
+    flipped_binary = ''.join(['1' if bit == '0' else '0' for bit in binary_representation])
+
+    # Convert the flipped binary back to decimal
+    result = int(flipped_binary, 2)
+
+    return result
+
+# Sample Input
+input_num = 50
+
+# Output
+output_result = strip_and_flip_base10(input_num)
+print(output_result)

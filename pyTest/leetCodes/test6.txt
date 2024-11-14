@@ -1,0 +1,63 @@
+In this challenge, the REST API contains information about a collection of users and articles they created. Given the threshold value, the goal is to use the API to get the list of the most active authors. Specially, the list of usernames of users with a submission count that is strictly greater tahn the given threshold. T"he list of usernames must be returned in the order the users appear in the results.
+
+
+To access the collection of users, make an HTTP GET request to:
+https://jsonmock.hackerrank.com/api/article_users?page=<pageNumber>
+where <pageNumber> is an integer denoting the page of the results to return.
+
+For example, GET request to https://jsonmock.hackerrank.com/api/article_users\search?page=2 will return the second page of the collection of users. Pages are numbered from 1. In order to access the first page, request page number 1. 
+
+The response to a request is a JSON with 5 fields: 
+1. id: unique ID of the user
+2. username: the username of the user
+3. submitted: total number of artciles submitted by the user
+4. updated_at: the date and time of the last update to this record
+5. submission_count: the number of submitted articles that are approved
+6. comment_count: the total number of comments the user made
+7. created_at: the date and time when the record was created
+
+
+
+Sample Input for Custom Testing:
+10
+Sample output:
+epaga
+panny olalonde
+WisNorcan 
+dammalam
+
+
+Explanation:
+The threshold value is 10, so the result must contain usernames of users with the submission count value greater than 10. There are 10 such users and their usernames in the order they first appear in the API response are as listed in Sample Output.
+
+
+
+
+
+
+Answer:
+
+def Function(threshold):
+    page_number = 1
+    result = []
+
+    while True:
+        # Make an HTTP GET request to the API
+        url = f"https://jsonmock.hackerrank.com/api/article_users?page={page_number}"
+        response = requests.get(url)
+        data = response.json()
+
+        # Extract relevant information from the API response
+        users = data.get('data', [])
+
+        # Filter users based on the threshold value
+        active_users = [user['username'] for user in users if user['submission_count'] > threshold]
+        result.extend(active_users)
+
+        # Check if there are more pages to retrieve
+        if page_number < data['total_pages']:
+            page_number += 1
+        else:
+            break
+
+    return result

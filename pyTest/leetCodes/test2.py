@@ -1,0 +1,11 @@
+import random as random
+
+# randomly shuffled the number inside the list
+testList = [1, 2, 3, 4, 5]
+for i in testList:
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+There is a new meme social network app called HackerMeme, and it is getting a lot of traction.
+
+A problem the development team is encountering is that there may be several hours between a user's active sessions. The marketing team has decided to create a messaging bot that will humor the user with witty memes every 6 hours. It will also allow the user to interact with the bot to find new memes. 
+
+Design an architecture for this bot that will send posts to the user and will allow the user to interact with it.
+
+Components:
+1. A cloud infrastructure like AWS/GCP
+2. An NLP logic service
+3. The backend service is in Python
+4. The client is any device that has a web browser
+
+
+
+
+
+Answers:
+prototype:
+
+
+
+
+
+
+
+
+
+   +-------------------------+
+   |   Web Browser Client    |
+   +-------------------------+
+              |
+              v
+   +-------------------------+
+   |    Backend Service      |
+   |     (Python-based)      |
+   +-------------------------+
+              |
+              v
+   +-------------------------+
+   |   NLP Logic Service     |
+   +-------------------------+
+              |
+              v
+   +-------------------------+
+   |   Cloud Infrastructure  |
+   |   (AWS/GCP)              |
+   +-------------------------+
